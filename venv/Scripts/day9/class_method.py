@@ -1,23 +1,23 @@
 """
-Time   : 2020/6/12 20:13
+Time   : 2020/6/13 12:44
 Author : huyangh
-练习1：定义一个类描述数字时钟。
+演示类方法
 """
-import time
+from time import time, localtime, sleep
+
 
 class Clock(object):
     """数字时钟"""
 
     def __init__(self, hour=0, minute=0, second=0):
-        """初始化方法
-
-        :param hour: 时
-        :param minute: 分
-        :param second: 秒
-        """
         self._hour = hour
         self._minute = minute
         self._second = second
+
+    @classmethod
+    def now(cls):
+        ctime = localtime(time())
+        return cls(ctime.tm_hour, ctime.tm_min, ctime.tm_sec)
 
     def run(self):
         """走字"""
@@ -33,18 +33,16 @@ class Clock(object):
 
     def show(self):
         """显示时间"""
-        return '%02d:%02d:%02d' % (self._hour, self._minute, self._second)
+        return '%02d:%02d:%02d' % \
+               (self._hour, self._minute, self._second)
 
 
 def main():
-    localtime = time.localtime(time.time())
-    hour = localtime.tm_hour
-    min  = localtime.tm_min
-    sec  = localtime.tm_sec
-    clock = Clock(hour, min, sec)
+    # 通过类方法创建对象并获取系统时间
+    clock = Clock.now()
     while True:
         print(clock.show())
-        time.sleep(1)
+        sleep(1)
         clock.run()
 
 
