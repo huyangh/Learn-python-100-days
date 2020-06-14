@@ -6,9 +6,9 @@ def bubbleSort(list):
 
 
 def main():
-    list1 = [2, 5, 6, 98, 34, 56, 90, 102, 23, 234, 3, 11]
-    bubbleSort(list1)
-    print(list1)
+    list = [2, 5, 6, 98, 34, 56, 90, 102, 23, 234, 3, 11]
+    bubbleSort(list)
+    print(list)
 
 
 if __name__ == "__main__":
